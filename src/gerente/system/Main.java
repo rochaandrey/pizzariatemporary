@@ -7,6 +7,7 @@ public class Main{
     private static String sabor;
     private static String descricao;
     private static double preco;
+    private static double salario;
     private static int id;
     private static Scanner scanner = new Scanner(System.in);
 
@@ -80,9 +81,19 @@ public class Main{
 
     }
 
+    //nao testei se funciona ainda
     public static void contratarEntregador(){
+        Entregador entregador = new Entregador();
         System.out.println("Novo entregador: ");
         System.out.println("nome: ");
+        nome = scanner.nextLine();
+        entregador.setNome(nome);
+        System.out.println("salario: ");
+        salario = scanner.nextDouble();
+        entregador.setSalario(salario);
+        Automatic.listaentregadores.add(entregador);
+        entregador.setId(Automatic.listaentregadores.indexOf(entregador)+100);
+        System.out.println("CONTRATADO! "+entregador);
 
     }
 

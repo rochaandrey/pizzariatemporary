@@ -2,11 +2,10 @@ package gerente.system;
 
 public class Entregador {
     private String nome;
-    private int id;
-    private double salario = 1312.5D;
+    private int id; // o id é 100 + a posição do entregador no array
+    private double salario;
 
-    public Entregador(String nome) {
-        this.nome = nome;
+    public Entregador() {
     }
 
     public String getNome() {
