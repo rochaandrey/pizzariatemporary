@@ -2,12 +2,10 @@ package gerente.system;
 
 import java.util.Scanner;
 
-//por motivos desconhecidos, alguns atributos como o SABOR não estão conseguindo receber scanner.nextLine();
-
 public class Main{
     private static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
-        /*byte escolha;
+        byte escolha;
         InterfaceGerente.menu();
         escolha = scanner.nextByte();
         switch (escolha){
@@ -49,14 +47,10 @@ public class Main{
             default:
                 break;
         }
-*/
-        addPizza();
-        addPizza();
     }
 
 
     //falta adicionar uma função para ver se a pizza com o nome criado já existe no array, se sim, nao adiciona
-
     public static void addPizza(){
         String sabor;
         String descricao;
@@ -174,7 +168,7 @@ public class Main{
         }
     }
 
-    // nao faço a minima ideia do porq nao funciona
+    // nao testei
     public static void atualizarBebida(){
         String nome;
         double preco;
@@ -201,8 +195,6 @@ public class Main{
                 System.out.println("bebida atualizada! "+obj);
             }
         }
-
-
     }
 
     //nao testei se funciona ainda!
