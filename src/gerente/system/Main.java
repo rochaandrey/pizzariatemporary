@@ -2,22 +2,65 @@ package gerente.system;
 
 import java.util.Scanner;
 
+//por motivos desconhecidos, alguns atributos como o SABOR não estão conseguindo receber scanner.nextLine();
+
 public class Main{
-    private static String nome;
-    private static String sabor;
-    private static String descricao;
-    private static double preco;
-    private static double salario;
-    private static int id;
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
+        byte escolha;
+        InterfaceGerente.menu();
+        escolha = scanner.nextByte();
+        switch (escolha){
+            case 1:
+                InterfaceGerente.clear();
+                addPizza();
+                InterfaceGerente.clear();
+                InterfaceGerente.menu();
+                break;
+            case 2:
+                InterfaceGerente.clear();
+                removePizza();
+                InterfaceGerente.clear();
+                InterfaceGerente.menu();
+                break;
+            case 3:
+                InterfaceGerente.clear();
+                atualizarPizza();
+                InterfaceGerente.clear();
+                InterfaceGerente.menu();
+            case 4:
+                InterfaceGerente.clear();
+                addBebida();
+                InterfaceGerente.clear();
+                InterfaceGerente.menu();
+                break;
+            case 5:
+                InterfaceGerente.clear();
+                removeBebida();
+                InterfaceGerente.clear();
+                InterfaceGerente.menu();
+                break;
+            case 6:
+                InterfaceGerente.clear();
+                atualizarBebida();
+                InterfaceGerente.clear();
+                InterfaceGerente.menu();
+                break;
+            default:
+                break;
+        }
 
     }
 
-    //ta funcionando, MAS TEM QUE ADICIONAR O VERIFICADOR PARA NÃO ADICIONAR UMA PIZZA CUJO SABOR JÁ EXISTE
+    //quando eu executo esse método +1 vez fica dando erro no String sabor
+    //falta adicionar uma função para ver se a pizza com o nome criado já existe no array, se sim, nao adiciona
     public static void addPizza(){
+        String sabor;
+        String descricao;
+        double preco;
         Pizza pizza = new Pizza();
+
         System.out.println("------------------------");
         System.out.println("QUAL O SABOR DA PIZZA? : ");
         sabor = scanner.nextLine();
@@ -31,33 +74,38 @@ public class Main{
         preco = scanner.nextDouble();
         pizza.setPreco(preco);
 
-        // se já existe essa pizza na lista, não é adicionado
-
         Automatic.listapizzas.add(pizza);
         System.out.println("pizza adicionada! "+ pizza);
     }
-    //nao ta funcionando
-    public static void removePizza(){
-        Automatic.mostrarpizzas();
-        System.out.println("QUAL SABOR DESEJA REMOVER? ");
-        System.out.println("sabor: ");
-        sabor = scanner.nextLine();
 
-        //tem alguma coisa errada aq
-        Pizza pizza = new Pizza(sabor);
-        for(Pizza obj : Automatic.listapizzas ){
-            if(pizza.equals(obj)) {
-                Automatic.listapizzas.remove(obj);
-                obj = null;
-            }
+    //creio eu que consegui consertar
+    public static void removePizza(){
+        byte indexpizza;
+        Pizza pizza = new Pizza();
+
+        Automatic.mostrarpizzas();
+        System.out.println("QUAL O ID (número) DA PIZZA QUE DESEJA REMOVER? ");
+        System.out.println("id: ");
+        indexpizza = scanner.nextByte();
+
+        if(Automatic.listapizzas.get(indexpizza-1) != null){
+            System.out.println("removendo a pizza: "+Automatic.listapizzas.get(indexpizza-1));
+        }else{
+            return;
         }
     }
-    //nao funciona
+
+    //ta com erro
     public static void atualizarPizza(){
+        String sabor;
+        String descricao;
+        double preco;
+
         Automatic.mostrarpizzas();
         System.out.println("QUAL PIZZA GOSTARIA DE ATUALIZAR? ");
         System.out.println("sabor: ");
         sabor = scanner.nextLine();
+
         //o erro ta por aqui
         Pizza pizza = new Pizza(sabor);
         for(Pizza obj : Automatic.listapizzas ){
@@ -81,9 +129,52 @@ public class Main{
 
     }
 
+    //falta adicionar uma função para ver se a bebida com o nome criado já existe no array, se sim, nao adiciona
+    public static void addBebida(){
+        String nome;
+        double preco;
+        Bebida bebida = new Bebida();
+
+        System.out.println("ADICIONANDO BEBIDA...");
+        System.out.println("nome: ");
+        nome = scanner.nextLine();
+        bebida.setNome(nome);
+        System.out.println("preco: ");
+        preco = scanner.nextDouble();
+        bebida.setPreco(preco);
+
+        Automatic.listabebidas.add(bebida);
+        System.out.println("Bebida adicionada: "+bebida);
+    }
+
+    //nao testei se funciona
+    public static void removeBebida(){
+        byte indexbebida;
+        Pizza pizza = new Pizza();
+
+        Automatic.mostrarpizzas();
+        System.out.println("QUAL O ID (número) DA BEBIDA QUE DESEJA REMOVER? ");
+        System.out.println("id: ");
+        indexbebida = scanner.nextByte();
+
+        if(Automatic.listapizzas.get(indexbebida-1) != null){
+            System.out.println("removendo a pizza: "+Automatic.listabebidas.get(indexbebida-1));
+        }else{
+            return;
+        }
+    }
+
+    public static void atualizarBebida(){
+
+    }
+
     //nao testei se funciona ainda!
     public static void contratarEntregador(){
+        String nome;
+        int id;
+        double salario;
         Entregador entregador = new Entregador();
+
         System.out.println("Novo entregador: ");
         System.out.println("nome: ");
         nome = scanner.nextLine();
@@ -91,6 +182,7 @@ public class Main{
         System.out.println("salario: ");
         salario = scanner.nextDouble();
         entregador.setSalario(salario);
+
         Automatic.listaentregadores.add(entregador);
         entregador.setId(Automatic.listaentregadores.indexOf(entregador)+100);
         System.out.println("CONTRATADO! "+entregador);
@@ -98,3 +190,5 @@ public class Main{
     }
 
 }
+
+

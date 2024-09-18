@@ -55,11 +55,10 @@ public class Pizza {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if(this == obj){return true;}
-        if(this == null){return false;}
-        if( getClass() != obj.getClass()){return false;}
-        Pizza newobject = (Pizza) obj;
-        return sabor.equals(newobject.sabor);
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Pizza pizza = (Pizza) o;
+        return Objects.equals(sabor, pizza.sabor);
     }
 }

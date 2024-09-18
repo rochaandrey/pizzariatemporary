@@ -4,6 +4,9 @@ public class Bebida {
     private String nome;
     private double preco;
 
+    public Bebida() {
+    }
+
     public Bebida(String nome, double preco) {
         this.nome = nome;
         this.preco = preco;
@@ -27,7 +30,7 @@ public class Bebida {
 
     @Override
     public String toString() {
-        return "Bebida {" +
+        return "{" +
                 "nome='" + nome + '\'' +
                 ", preco=" + preco +
                 '}';
