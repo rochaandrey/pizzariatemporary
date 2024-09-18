@@ -6,31 +6,31 @@ public class Main{
     private static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
         byte escolha;
-        InterfaceGerente.menu();
+        menu();
         escolha = scanner.nextByte();
         switch (escolha){
             case 1:
                 addPizza();
-                InterfaceGerente.menu();
+                menu();
                 break;
             case 2:
                 removePizza();
-                InterfaceGerente.menu();
+                menu();
                 break;
             case 3:
                 attPizza();
-                InterfaceGerente.menu();
+                menu();
             case 4:
                 addBebida();
-                InterfaceGerente.menu();
+                menu();
                 break;
             case 5:
                 removeBebida();
-                InterfaceGerente.menu();
+                menu();
                 break;
             case 6:
                 atualizarBebida();
-                InterfaceGerente.menu();
+                menu();
                 break;
             default:
                 break;
@@ -41,7 +41,7 @@ public class Main{
     //falta adicionar uma função para ver se a pizza com o nome criado já existe no array, se sim, nao adiciona
 
     public static void addPizza(){
-        InterfaceGerente.clear();
+        clear();
         String sabor;
         String descricao;
         double preco;
@@ -68,7 +68,7 @@ public class Main{
     }
 
     public static void removePizza(){
-        InterfaceGerente.clear();
+        clear();
         byte indexpizza;
         Pizza pizza = new Pizza();
 
@@ -85,7 +85,7 @@ public class Main{
     }
 
     public static void attPizza(){
-        InterfaceGerente.clear();
+        clear();
         String sabor;
         String descricao;
         double preco;
@@ -124,7 +124,7 @@ public class Main{
 
     //falta adicionar uma função para ver se a bebida com o nome criado já existe no array, se sim, nao adiciona
     public static void addBebida(){
-        InterfaceGerente.clear();
+        clear();
         String nome;
         double preco;
         Bebida bebida = new Bebida();
@@ -144,7 +144,7 @@ public class Main{
 
     //nao testei se funciona
     public static void removeBebida(){
-        InterfaceGerente.clear();
+        clear();
         byte indexbebida;
         Pizza pizza = new Pizza();
 
@@ -162,7 +162,7 @@ public class Main{
     }
 // deve ta com erro ainda
     public static void atualizarBebida(){
-        InterfaceGerente.clear();
+        clear();
         String nome;
         double preco;
 
@@ -194,7 +194,7 @@ public class Main{
 
     //nao testei se funciona ainda!
     public static void contratarEntregador(){
-        InterfaceGerente.clear();
+        clear();
         String nome;
         int id;
         double salario;
@@ -215,7 +215,7 @@ public class Main{
     }
 
     public static void demitirEntregador(){
-        InterfaceGerente.clear();
+        clear();
         byte id;
         System.out.println("DEMITIR ENTREGADOR...");
         Automatic.mostrarentregadores();
@@ -233,6 +233,26 @@ public class Main{
         }
 
 
+    }
+
+    static void menu() {
+        System.out.println("BOA NOITE! O QUE DESEJA FAZER HOJE?");
+        System.out.println(" 1 - Adicionar Pizzas");
+        System.out.println(" 2 - Remover Pizzas");
+        System.out.println(" 3 - Atualizar Pizzas");
+        System.out.println(" 4 - Adicionar Bebidas");
+        System.out.println(" 5 - Remover Bebidas");
+        System.out.println(" 6 - Atualizar Bebidas");
+        System.out.println(" 7 - Gerenciar entregadores");
+        System.out.println(" 8 - Ver pedidos");
+    }
+    static void clear() {
+        //imprime linhas em branco
+        int contador = 0;
+        while (contador < 20) {
+            System.out.println();
+            contador++;
+        }
     }
 
 }
