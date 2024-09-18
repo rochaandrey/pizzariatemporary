@@ -36,4 +36,6 @@ public class Automatic {
         }
         System.out.println("--------------------------");
     }
+
+
 }

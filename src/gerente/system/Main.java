@@ -6,9 +6,8 @@ import java.util.Scanner;
 
 public class Main{
     private static Scanner scanner = new Scanner(System.in);
-
     public static void main(String[] args) {
-        byte escolha;
+        /*byte escolha;
         InterfaceGerente.menu();
         escolha = scanner.nextByte();
         switch (escolha){
@@ -50,11 +49,14 @@ public class Main{
             default:
                 break;
         }
-
+*/
+        addPizza();
+        addPizza();
     }
 
-    //quando eu executo esse método +1 vez fica dando erro no String sabor
+
     //falta adicionar uma função para ver se a pizza com o nome criado já existe no array, se sim, nao adiciona
+
     public static void addPizza(){
         String sabor;
         String descricao;
@@ -65,13 +67,16 @@ public class Main{
         System.out.println("QUAL O SABOR DA PIZZA? : ");
         sabor = scanner.nextLine();
         pizza.setSabor(sabor);
+
         System.out.println("------------------------");
         System.out.println("QUAIS OS INGREDIENTES DA PIZZA? : ");
         descricao = scanner.nextLine();
         pizza.setDescricao(descricao);
+
         System.out.println("------------------------");
         System.out.println("QUAL O PREÇO DA PIZZA? ");
         preco = scanner.nextDouble();
+        scanner.nextLine();
         pizza.setPreco(preco);
 
         Automatic.listapizzas.add(pizza);
@@ -115,12 +120,16 @@ public class Main{
                 System.out.println("sabor :");
                 sabor = scanner.nextLine();
                 obj.setSabor(sabor);
+
                 System.out.println("descrição: ");
                 descricao = scanner.nextLine();
                 obj.setDescricao(descricao);
+
                 System.out.println("preço: ");
                 preco = scanner.nextDouble();
+                scanner.nextLine();
                 obj.setPreco(preco);
+
                 System.out.println("----------------");
                 System.out.println("pizza atualizada! "+obj);
             }
@@ -141,6 +150,7 @@ public class Main{
         bebida.setNome(nome);
         System.out.println("preco: ");
         preco = scanner.nextDouble();
+        scanner.nextLine();
         bebida.setPreco(preco);
 
         Automatic.listabebidas.add(bebida);
@@ -185,6 +195,7 @@ public class Main{
                 obj.setNome(nome);
                 System.out.println("preço: ");
                 preco = scanner.nextDouble();
+                scanner.nextLine();
                 obj.setPreco(preco);
                 System.out.println("----------------");
                 System.out.println("bebida atualizada! "+obj);
@@ -207,6 +218,7 @@ public class Main{
         entregador.setNome(nome);
         System.out.println("salario: ");
         salario = scanner.nextDouble();
+        scanner.nextLine();
         entregador.setSalario(salario);
 
         Automatic.listaentregadores.add(entregador);
