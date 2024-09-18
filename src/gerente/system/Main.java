@@ -106,7 +106,7 @@ public class Main{
         System.out.println("sabor: ");
         sabor = scanner.nextLine();
 
-        //o erro ta por aqui
+        //o erro ta por aqui!
         Pizza pizza = new Pizza(sabor);
         for(Pizza obj : Automatic.listapizzas ){
             if(pizza.equals(obj)){
