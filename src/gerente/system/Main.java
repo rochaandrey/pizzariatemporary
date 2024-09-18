@@ -152,19 +152,45 @@ public class Main{
         byte indexbebida;
         Pizza pizza = new Pizza();
 
-        Automatic.mostrarpizzas();
+        Automatic.mostrarbebidas();
         System.out.println("QUAL O ID (número) DA BEBIDA QUE DESEJA REMOVER? ");
         System.out.println("id: ");
         indexbebida = scanner.nextByte();
 
-        if(Automatic.listapizzas.get(indexbebida-1) != null){
-            System.out.println("removendo a pizza: "+Automatic.listabebidas.get(indexbebida-1));
+        if(Automatic.listabebidas.get(indexbebida-1) != null){
+            System.out.println("removendo a bebida: "+Automatic.listabebidas.get(indexbebida-1));
         }else{
             return;
         }
     }
 
+    // nao faço a minima ideia do porq nao funciona
     public static void atualizarBebida(){
+        String nome;
+        double preco;
+
+        Automatic.mostrarpizzas();
+        System.out.println("QUAL BEBIDA GOSTARIA DE ATUALIZAR? ");
+        System.out.println("nome: ");
+        nome = scanner.nextLine();
+
+        //o erro ta por aqui!
+        Bebida bebida = new Bebida(nome);
+        for(Bebida obj : Automatic.listabebidas ){
+            if(bebida.equals(obj)){
+                System.out.println("----------------------");
+                System.out.println("Alterando bebida! "+obj);
+                System.out.println("nome :");
+                nome = scanner.nextLine();
+                obj.setNome(nome);
+                System.out.println("preço: ");
+                preco = scanner.nextDouble();
+                obj.setPreco(preco);
+                System.out.println("----------------");
+                System.out.println("bebida atualizada! "+obj);
+            }
+        }
+
 
     }
 

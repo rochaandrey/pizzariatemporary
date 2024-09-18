@@ -1,14 +1,19 @@
 package gerente.system;
 
+import java.util.Objects;
+
 public class Bebida {
     private String nome;
     private double preco;
 
-    public Bebida() {
+    public Bebida() {}
+
+    public Bebida(String nome) {
+        this.nome = nome;
     }
 
     public Bebida(String nome, double preco) {
-        this.nome = nome;
+        this.nome = nome.toUpperCase();
         this.preco = preco;
     }
 
@@ -35,4 +40,13 @@ public class Bebida {
                 ", preco=" + preco +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Bebida bebida = (Bebida) o;
+        return Objects.equals(nome, bebida.nome);
+    }
+
 }
