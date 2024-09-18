@@ -13,7 +13,6 @@ public interface InterfaceGerente {
         System.out.println(" 8 - Ver pedidos");
     }
 
-    //imprime linhas em branco
     static void clear() {
         //imprime linhas em branco
         int contador = 0;

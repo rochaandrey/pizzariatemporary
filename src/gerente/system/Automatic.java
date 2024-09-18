@@ -35,6 +35,7 @@ public class Automatic {
             System.out.println("Nome: "+entregador.getNome()+" | "+ entregador.getId()+" |"+ entregador.getSalario());
         }
         System.out.println("--------------------------");
+
     }
 
 
