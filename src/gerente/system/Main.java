@@ -2,62 +2,46 @@ package gerente.system;
 
 import java.util.Scanner;
 
-//por motivos desconhecidos, alguns atributos como o SABOR não estão conseguindo receber scanner.nextLine();
-
 public class Main{
     private static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
-        /*byte escolha;
+        byte escolha;
         InterfaceGerente.menu();
         escolha = scanner.nextByte();
         switch (escolha){
             case 1:
-                InterfaceGerente.clear();
                 addPizza();
-                InterfaceGerente.clear();
                 InterfaceGerente.menu();
                 break;
             case 2:
-                InterfaceGerente.clear();
                 removePizza();
-                InterfaceGerente.clear();
                 InterfaceGerente.menu();
                 break;
             case 3:
-                InterfaceGerente.clear();
-                atualizarPizza();
-                InterfaceGerente.clear();
+                attPizza();
                 InterfaceGerente.menu();
             case 4:
-                InterfaceGerente.clear();
                 addBebida();
-                InterfaceGerente.clear();
                 InterfaceGerente.menu();
                 break;
             case 5:
-                InterfaceGerente.clear();
                 removeBebida();
-                InterfaceGerente.clear();
                 InterfaceGerente.menu();
                 break;
             case 6:
-                InterfaceGerente.clear();
                 atualizarBebida();
-                InterfaceGerente.clear();
                 InterfaceGerente.menu();
                 break;
             default:
                 break;
         }
-*/
-        addPizza();
-        addPizza();
     }
 
 
     //falta adicionar uma função para ver se a pizza com o nome criado já existe no array, se sim, nao adiciona
 
     public static void addPizza(){
+        InterfaceGerente.clear();
         String sabor;
         String descricao;
         double preco;
@@ -83,8 +67,8 @@ public class Main{
         System.out.println("pizza adicionada! "+ pizza);
     }
 
-    //creio eu que consegui consertar
     public static void removePizza(){
+        InterfaceGerente.clear();
         byte indexpizza;
         Pizza pizza = new Pizza();
 
@@ -100,8 +84,8 @@ public class Main{
         }
     }
 
-    //ta com erro
-    public static void atualizarPizza(){
+    public static void attPizza(){
+        InterfaceGerente.clear();
         String sabor;
         String descricao;
         double preco;
@@ -140,6 +124,7 @@ public class Main{
 
     //falta adicionar uma função para ver se a bebida com o nome criado já existe no array, se sim, nao adiciona
     public static void addBebida(){
+        InterfaceGerente.clear();
         String nome;
         double preco;
         Bebida bebida = new Bebida();
@@ -159,6 +144,7 @@ public class Main{
 
     //nao testei se funciona
     public static void removeBebida(){
+        InterfaceGerente.clear();
         byte indexbebida;
         Pizza pizza = new Pizza();
 
@@ -167,15 +153,16 @@ public class Main{
         System.out.println("id: ");
         indexbebida = scanner.nextByte();
 
-        if(Automatic.listabebidas.get(indexbebida-1) != null){
-            System.out.println("removendo a bebida: "+Automatic.listabebidas.get(indexbebida-1));
-        }else{
-            return;
+        for(Bebida bebida : Automatic.listabebidas){
+            if(Automatic.listabebidas.get(indexbebida-1) != null){
+                System.out.println("removendo a bebida: "+Automatic.listabebidas.remove(Automatic.listabebidas.get(indexbebida-1)));
+                return;
+            }
         }
     }
-
-    // nao faço a minima ideia do porq nao funciona
+// deve ta com erro ainda
     public static void atualizarBebida(){
+        InterfaceGerente.clear();
         String nome;
         double preco;
 
@@ -207,6 +194,7 @@ public class Main{
 
     //nao testei se funciona ainda!
     public static void contratarEntregador(){
+        InterfaceGerente.clear();
         String nome;
         int id;
         double salario;
@@ -224,6 +212,26 @@ public class Main{
         Automatic.listaentregadores.add(entregador);
         entregador.setId(Automatic.listaentregadores.indexOf(entregador)+100);
         System.out.println("CONTRATADO! "+entregador);
+    }
+
+    public static void demitirEntregador(){
+        InterfaceGerente.clear();
+        byte id;
+        System.out.println("DEMITIR ENTREGADOR...");
+        Automatic.mostrarentregadores();
+        System.out.println("----------------");
+        System.out.println("qual o ID do funcionário a ser demitido ?" );
+        id = scanner.nextByte();
+        Entregador entregador = new Entregador();
+        entregador.setId(id);
+        for(Entregador randomentregador : Automatic.listaentregadores){
+            if(randomentregador.equals(entregador)){
+                Automatic.listaentregadores.remove(entregador);
+                entregador= null;
+                break;
+            }
+        }
+
 
     }
 

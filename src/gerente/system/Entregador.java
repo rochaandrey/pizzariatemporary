@@ -1,5 +1,7 @@
 package gerente.system;
 
+import java.util.Objects;
+
 public class Entregador {
     private String nome;
     private int id; // o id é 100 + a posição do entregador no array
@@ -40,4 +42,13 @@ public class Entregador {
                 ", salario=" + salario +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Entregador that = (Entregador) o;
+        return id == that.id;
+    }
+
 }
