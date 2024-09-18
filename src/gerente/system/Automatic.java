@@ -32,7 +32,7 @@ public class Automatic {
         System.out.println("######      ENTREGADORES      ######");
         System.out.println("--------------------------");
         for(Entregador entregador : listaentregadores){
-            System.out.println(listaentregadores.indexOf(entregador)+1+" - Nome: "+entregador.getNome()+" | "+ entregador.getId()+" |"+ entregador.getSalario());
+            System.out.println("Nome: "+entregador.getNome()+" | "+ entregador.getId()+" |"+ entregador.getSalario());
         }
         System.out.println("--------------------------");
     }
