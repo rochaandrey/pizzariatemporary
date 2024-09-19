@@ -2,6 +2,7 @@ package gerente.system;
 
 import java.util.Scanner;
 
+//talvez os 2 objetos criados nos métodos demitir e remover tenham que receber null, não sei se muda algo
 public class Main{
     private static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
@@ -12,45 +13,72 @@ public class Main{
             case 1:
                 InterfaceGerente.clear();
                 addPizza();
-                InterfaceGerente.clear();
+                scanner.nextLine();  // se der algum erro remove isso em todos os cases
+                InterfaceGerente.clear(); // e ESSE DAQUI tambem
                 InterfaceGerente.menu();
                 break;
             case 2:
                 InterfaceGerente.clear();
                 removePizza();
+                scanner.nextLine();
                 InterfaceGerente.clear();
                 InterfaceGerente.menu();
                 break;
             case 3:
                 InterfaceGerente.clear();
                 atualizarPizza();
+                scanner.nextLine();
                 InterfaceGerente.clear();
                 InterfaceGerente.menu();
             case 4:
                 InterfaceGerente.clear();
                 addBebida();
+                scanner.nextLine();
                 InterfaceGerente.clear();
                 InterfaceGerente.menu();
                 break;
             case 5:
                 InterfaceGerente.clear();
                 removeBebida();
+                scanner.nextLine();
                 InterfaceGerente.clear();
                 InterfaceGerente.menu();
                 break;
             case 6:
                 InterfaceGerente.clear();
                 atualizarBebida();
+                scanner.nextLine();
+                InterfaceGerente.clear();
+                InterfaceGerente.menu();
+                break;
+            case 7:
+                InterfaceGerente.clear();
+                contratarEntregador();
+                scanner.nextLine();
+                InterfaceGerente.clear();
+                InterfaceGerente.menu();
+                break;
+            case 8:
+                InterfaceGerente.clear();
+                pagarEntregador();
+                scanner.nextLine();
+                InterfaceGerente.clear();
+                InterfaceGerente.menu();
+                break;
+            case 9:
+                InterfaceGerente.clear();
+                demitirEntregador();
+                scanner.nextLine();
                 InterfaceGerente.clear();
                 InterfaceGerente.menu();
                 break;
             default:
+                System.exit(0);
                 break;
         }
     }
 
-
-    //falta adicionar uma função para ver se a pizza com o nome criado já existe no array, se sim, nao adiciona
+    //nao testei
     public static void addPizza(){
         String sabor;
         String descricao;
@@ -73,28 +101,36 @@ public class Main{
         scanner.nextLine();
         pizza.setPreco(preco);
 
-        Automatic.listapizzas.add(pizza);
-        System.out.println("pizza adicionada! "+ pizza);
+        if(!Automatic.listapizzas.contains(pizza)){
+            Automatic.listapizzas.add(pizza);
+            System.out.println("pizza adicionada! "+ pizza);
+        }
+
     }
 
-    //creio eu que consegui consertar
+    //nao testei
     public static void removePizza(){
-        byte indexpizza;
-        Pizza pizza = new Pizza();
+        String sabor;
 
-        Automatic.mostrarpizzas();
-        System.out.println("QUAL O ID (número) DA PIZZA QUE DESEJA REMOVER? ");
-        System.out.println("id: ");
-        indexpizza = scanner.nextByte();
+        Automatic.mostrarbebidas();
+        System.out.println("REMOVENDO BEBIDA...");
+        System.out.println("sabor: ");
+        sabor = scanner.nextLine();
+        scanner.nextLine(); // se der erro tira isso
+        Pizza pizza = new Pizza(sabor);
 
-        if(Automatic.listapizzas.get(indexpizza-1) != null){
-            System.out.println("removendo a pizza: "+Automatic.listapizzas.get(indexpizza-1));
-        }else{
-            return;
+        if(Automatic.listapizzas.contains(pizza)){
+            for(Pizza random : Automatic.listapizzas){
+                if(pizza.equals(random)){
+                    Automatic.listapizzas.remove(random);
+                    System.out.println(random.getSabor()+" REMOVIDO");
+                    break;
+                }
+            }
         }
     }
 
-    //ta com erro
+    //tava com erro, mas nao testei se resolveu
     public static void atualizarPizza(){
         String sabor;
         String descricao;
@@ -106,6 +142,8 @@ public class Main{
         sabor = scanner.nextLine();
 
         //o erro ta por aqui!
+
+
         Pizza pizza = new Pizza(sabor);
         for(Pizza obj : Automatic.listapizzas ){
             if(pizza.equals(obj)){
@@ -132,7 +170,7 @@ public class Main{
 
     }
 
-    //falta adicionar uma função para ver se a bebida com o nome criado já existe no array, se sim, nao adiciona
+    //testa ai se funciona
     public static void addBebida(){
         String nome;
         double preco;
@@ -142,29 +180,37 @@ public class Main{
         System.out.println("nome: ");
         nome = scanner.nextLine();
         bebida.setNome(nome);
+
         System.out.println("preco: ");
         preco = scanner.nextDouble();
         scanner.nextLine();
         bebida.setPreco(preco);
 
-        Automatic.listabebidas.add(bebida);
-        System.out.println("Bebida adicionada: "+bebida);
+        if(!Automatic.listabebidas.contains(bebida)){
+            Automatic.listabebidas.add(bebida);
+            System.out.println("Bebida adicionada: "+bebida);
+        }
     }
 
-    //nao testei se funciona
+    //testa ai se funciona
     public static void removeBebida(){
-        byte indexbebida;
-        Pizza pizza = new Pizza();
+        String nome;
 
         Automatic.mostrarbebidas();
-        System.out.println("QUAL O ID (número) DA BEBIDA QUE DESEJA REMOVER? ");
-        System.out.println("id: ");
-        indexbebida = scanner.nextByte();
+        System.out.println("REMOVENDO BEBIDA...");
+        System.out.println("nome: ");
+        nome = scanner.nextLine();
+        scanner.nextLine(); // se der erro tira isso
+        Bebida bebida = new Bebida(nome);
 
-        if(Automatic.listabebidas.get(indexbebida-1) != null){
-            System.out.println("removendo a bebida: "+Automatic.listabebidas.get(indexbebida-1));
-        }else{
-            return;
+        if(Automatic.listabebidas.contains(bebida)){
+            for(Bebida random : Automatic.listabebidas){
+                if(bebida.equals(random)){
+                    Automatic.listabebidas.remove(random);
+                    System.out.println(random.getNome()+" REMOVIDO");
+                    break;
+                }
+            }
         }
     }
 
@@ -197,10 +243,9 @@ public class Main{
         }
     }
 
-    //nao testei se funciona ainda!
+    //nao testei
     public static void contratarEntregador(){
         String nome;
-        int id;
         double salario;
         Entregador entregador = new Entregador();
 
@@ -208,15 +253,57 @@ public class Main{
         System.out.println("nome: ");
         nome = scanner.nextLine();
         entregador.setNome(nome);
+
         System.out.println("salario: ");
         salario = scanner.nextDouble();
         scanner.nextLine();
         entregador.setSalario(salario);
 
+        //aqui nao precisa de contain, já que podem ter entregadores de mesmo nome mas com id's diferetes
+
         Automatic.listaentregadores.add(entregador);
         entregador.setId(Automatic.listaentregadores.indexOf(entregador)+100);
         System.out.println("CONTRATADO! "+entregador);
 
+    }
+
+    //nao testei
+    public static void pagarEntregador(){
+        byte id;
+
+        Automatic.mostrarentregadores();
+        System.out.println("QUAL O ENTREGADOR DESEJA PAGAR? ");
+        System.out.println("id: ");
+        id = scanner.nextByte();
+        Entregador entregador = new Entregador(id);
+        scanner.nextLine();  //se tiver dando erro, acho que tirar isso resolve
+        if (Automatic.listaentregadores.contains(entregador)) {
+            for( Entregador random : Automatic.listaentregadores){
+                if(entregador.equals(random)){
+                    System.out.println("entregador pago!");
+                }
+            }
+        }
+    }
+
+    public static void demitirEntregador(){
+        byte id;
+        Automatic.mostrarentregadores();
+        System.out.println("DEMITIR ENTREGADOR...");
+        System.out.println("id: ");
+        id = scanner.nextByte();
+        scanner.nextLine(); // se der erro tira isso
+        Entregador entregador = new Entregador(id);
+
+        if(Automatic.listaentregadores.contains(entregador)){
+            for(Entregador random : Automatic.listaentregadores){
+                if(entregador.equals(random)){
+                    Automatic.listaentregadores.remove(random);
+                    System.out.println(random.getNome()+" DEMITIDO!");
+                    break;
+                }
+            }
+        }
     }
 
 }

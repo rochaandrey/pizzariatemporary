@@ -1,13 +1,15 @@
 package gerente.system;
 
-import java.util.Objects;
-
 public class Entregador {
     private String nome;
     private int id; // o id é 100 + a posição do entregador no array
     private double salario;
 
     public Entregador() {
+    }
+
+    public Entregador(int id){
+        this.id = id;
     }
 
     public String getNome() {

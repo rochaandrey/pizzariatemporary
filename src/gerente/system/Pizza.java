@@ -15,12 +15,6 @@ public class Pizza {
         this.sabor=sabor;
     }
 
-    public Pizza(String nome, String descricao, double preco) {
-        this.sabor = nome;
-        this.descricao = descricao;
-        this.preco = preco;
-    }
-
     public String getSabor() {
         return sabor;
     }

@@ -6,15 +6,12 @@ public class Bebida {
     private String nome;
     private double preco;
 
-    public Bebida() {}
+    public Bebida() {
+
+    }
 
     public Bebida(String nome) {
         this.nome = nome;
-    }
-
-    public Bebida(String nome, double preco) {
-        this.nome = nome.toUpperCase();
-        this.preco = preco;
     }
 
     public String getNome() {
