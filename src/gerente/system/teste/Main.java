@@ -1,4 +1,9 @@
-package gerente.system;
+package gerente.system.teste;
+
+import gerente.system.modelo.Bebida;
+import gerente.system.modelo.Entregador;
+import gerente.system.modelo.MenuAndClear;
+import gerente.system.modelo.Pizza;
 
 import java.util.Scanner;
 
@@ -7,70 +12,70 @@ public class Main{
     private static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
         byte escolha;
-        InterfaceGerente.menu();
+        MenuAndClear.menu();
         escolha = scanner.nextByte();
         switch (escolha){
             case 1:
-                InterfaceGerente.clear();
+                MenuAndClear.clear();
                 addPizza();
                 scanner.nextLine();  // se der algum erro remove isso em todos os cases
-                InterfaceGerente.clear(); // e ESSE DAQUI tambem
-                InterfaceGerente.menu();
+                MenuAndClear.clear(); // e ESSE DAQUI tambem
+                MenuAndClear.menu();
                 break;
             case 2:
-                InterfaceGerente.clear();
+                MenuAndClear.clear();
                 removePizza();
                 scanner.nextLine();
-                InterfaceGerente.clear();
-                InterfaceGerente.menu();
+                MenuAndClear.clear();
+                MenuAndClear.menu();
                 break;
             case 3:
-                InterfaceGerente.clear();
+                MenuAndClear.clear();
                 atualizarPizza();
                 scanner.nextLine();
-                InterfaceGerente.clear();
-                InterfaceGerente.menu();
+                MenuAndClear.clear();
+                MenuAndClear.menu();
             case 4:
-                InterfaceGerente.clear();
+                MenuAndClear.clear();
                 addBebida();
                 scanner.nextLine();
-                InterfaceGerente.clear();
-                InterfaceGerente.menu();
+                MenuAndClear.clear();
+                MenuAndClear.menu();
                 break;
             case 5:
-                InterfaceGerente.clear();
+                MenuAndClear.clear();
                 removeBebida();
                 scanner.nextLine();
-                InterfaceGerente.clear();
-                InterfaceGerente.menu();
+                MenuAndClear.clear();
+                MenuAndClear.menu();
                 break;
             case 6:
-                InterfaceGerente.clear();
+                MenuAndClear.clear();
                 atualizarBebida();
                 scanner.nextLine();
-                InterfaceGerente.clear();
-                InterfaceGerente.menu();
+                MenuAndClear.clear();
+                MenuAndClear.menu();
                 break;
             case 7:
-                InterfaceGerente.clear();
+                MenuAndClear.clear();
                 contratarEntregador();
                 scanner.nextLine();
-                InterfaceGerente.clear();
-                InterfaceGerente.menu();
+                MenuAndClear.clear();
+                MenuAndClear.menu();
                 break;
             case 8:
-                InterfaceGerente.clear();
+                MenuAndClear.clear();
                 pagarEntregador();
                 scanner.nextLine();
-                InterfaceGerente.clear();
-                InterfaceGerente.menu();
+                MenuAndClear.clear();
+                MenuAndClear.menu();
                 break;
             case 9:
-                InterfaceGerente.clear();
+                MenuAndClear.clear();
                 demitirEntregador();
                 scanner.nextLine();
-                InterfaceGerente.clear();
-                InterfaceGerente.menu();
+                MenuAndClear.clear();
+                MenuAndClear.menu();
                 break;
             default:
                 System.exit(0);

@@ -1,4 +1,4 @@
-package gerente.system;
+package gerente.system.modelo;
 
 public class Entregador {
     private String nome;

@@ -1,6 +1,6 @@
-package gerente.system;
+package gerente.system.modelo;
 
-public interface InterfaceGerente {
+public interface MenuAndClear {
     static void menu() {
         System.out.println("BOA NOITE! O QUE DESEJA FAZER HOJE?");
         System.out.println(" 1 - Adicionar Pizzas");

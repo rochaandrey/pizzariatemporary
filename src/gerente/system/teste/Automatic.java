@@ -1,4 +1,8 @@
-package gerente.system;
+package gerente.system.teste;
+
+import gerente.system.modelo.Bebida;
+import gerente.system.modelo.Entregador;
+import gerente.system.modelo.Pizza;
 
 import java.util.ArrayList;
 

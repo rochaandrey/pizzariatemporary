@@ -1,4 +1,4 @@
-package gerente.system;
+package gerente.system.modelo;
 
 import java.util.Objects;
 
