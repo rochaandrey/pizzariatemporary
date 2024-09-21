@@ -12,7 +12,7 @@ public class Automatic {
         System.out.println("######      PIZZAS      ######");
         System.out.println("--------------------------");
         for(Pizza pizza : listapizzas){
-            System.out.println(listapizzas.indexOf(pizza)+1+" - "+pizza.getSabor()+": "+pizza.getDescricao()+" - R$"+pizza.getPreco());
+            System.out.println(listapizzas.indexOf(pizza)+1+" - "+pizza.getNome()+": "+pizza.getDescricao()+" - R$"+pizza.getPreco());
         }
         System.out.println("--------------------------");
     }

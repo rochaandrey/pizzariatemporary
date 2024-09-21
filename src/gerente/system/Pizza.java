@@ -15,11 +15,11 @@ public class Pizza {
         this.sabor=sabor;
     }
 
-    public String getSabor() {
+    public String getNome() {
         return sabor;
     }
 
-    public void setSabor(String sabor) {
+    public void setNome(String sabor) {
         this.sabor = sabor.toUpperCase();
     }
 
