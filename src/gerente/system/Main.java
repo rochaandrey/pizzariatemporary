@@ -5,8 +5,14 @@ import java.util.Scanner;
 public class Main {
     private static Scanner scanner = new Scanner(System.in);
     private static RepositorioCardapio repositorio = new RepositorioCardapio();
+    private static SistemaDePedidos sistemaDePedidos = new SistemaDePedidos();
+    private static Gerente gerente = new Gerente(sistemaDePedidos);
 
     public static void main(String[] args) {
+        // Inicia a simulação de pedidos automáticos
+        inicializarCardapio();
+        sistemaDePedidos.iniciarSimulacaoPedidos(repositorio);
+
         int escolha;
 
         do {
@@ -42,17 +48,19 @@ public class Main {
                 case 9: // Atualizar Entregador
                     atualizarEntregador();
                     break;
-                case 10:
+                case 10: // Ver pedidos
+                    gerente.visualizarPedidos();
+                    break;
+                case 11:
                     System.out.println("Saindo...");
                     System.exit(0);
                     break;
                 default:
-                    System.out.println("Saindo...");
-                    System.exit(0);
+                    System.out.println("Opção inválida. Tente novamente.");
                     break;
             }
             InterfaceGerente.clear();
-        } while (escolha != 10);
+        } while (escolha != 11);
     }
 
     // Métodos de Adicionar
@@ -177,5 +185,19 @@ public class Main {
             }
         }
         System.out.println("Entregador não encontrado.");
+    }
+
+    private static void inicializarCardapio() {
+        // Adicionando pizzas básicas
+        repositorio.adicionar(new Pizza("Margherita", "Molho de tomate, mozzarella, manjericão", 25.00));
+        repositorio.adicionar(new Pizza("Pepperoni", "Molho de tomate, mozzarella, pepperoni", 30.00));
+        repositorio.adicionar(new Pizza("Quatro Queijos", "Molho de tomate, mozzarella, gorgonzola, parmesão, provolone", 35.00));
+        repositorio.adicionar(new Pizza("Frango com Catupiry", "Molho de tomate, mozzarella, frango desfiado, catupiry", 28.00));
+
+        // Adicionando bebidas básicas
+        repositorio.adicionar(new Bebida("Coca-Cola", 5.00));
+        repositorio.adicionar(new Bebida("Água", 3.00));
+        repositorio.adicionar(new Bebida("Guaraná", 5.00));
+        repositorio.adicionar(new Bebida("Suco de Laranja", 7.00));
     }
 }

@@ -10,6 +10,12 @@ public class Bebida {
 
     }
 
+    public Bebida(String nome, double preco) {
+        this.nome = nome;
+        this.preco = preco;
+    }
+
+
     public Bebida(String nome) {
         this.nome = nome;
     }

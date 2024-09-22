@@ -11,6 +11,13 @@ public class Pizza {
 
     }
 
+    public Pizza(String sabor, String descricao, double preco) {
+        this.sabor = sabor;
+        this.descricao = descricao;
+        this.preco = preco;
+    }
+
+
     public Pizza(String sabor){
         this.sabor=sabor;
     }
