@@ -27,7 +27,7 @@ public class SistemaDePedidos {
         Thread simulador = new Thread(() -> {
             while (true) {
                 try {
-                    // Gera um pedido aleatório de um cliente a cada 5 segundos
+                    // Gera um pedido aleatório de um cliente a cada 1 min
                     Cliente cliente = new Cliente();
                     Pedido pedido = cliente.fazerPedidoAleatorio(repositorio);
                     adicionarPedido(pedido);
