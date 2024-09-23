@@ -7,83 +7,81 @@ import gerente.system.modelo.Pizza;
 
 import java.util.Scanner;
 
-//talvez os 2 objetos criados nos métodos demitir e remover tenham que receber null, não sei se muda algo
 public class Main{
     private static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
+        baseconfig();
         byte escolha;
-        MenuAndClear.menu();
-        escolha = scanner.nextByte();
-        switch (escolha){
-            case 1:
-                MenuAndClear.clear();
-                addPizza();
-                scanner.nextLine();  // se der algum erro remove isso em todos os cases
-                MenuAndClear.clear(); // e ESSE DAQUI tambem
-                MenuAndClear.menu();
-                break;
-            case 2:
-                MenuAndClear.clear();
-                removePizza();
-                scanner.nextLine();
-                MenuAndClear.clear();
-                MenuAndClear.menu();
-                break;
-            case 3:
-                MenuAndClear.clear();
-                atualizarPizza();
-                scanner.nextLine();
-                MenuAndClear.clear();
-                MenuAndClear.menu();
-            case 4:
-                MenuAndClear.clear();
-                addBebida();
-                scanner.nextLine();
-                MenuAndClear.clear();
-                MenuAndClear.menu();
-                break;
-            case 5:
-                MenuAndClear.clear();
-                removeBebida();
-                scanner.nextLine();
-                MenuAndClear.clear();
-                MenuAndClear.menu();
-                break;
-            case 6:
-                MenuAndClear.clear();
-                atualizarBebida();
-                scanner.nextLine();
-                MenuAndClear.clear();
-                MenuAndClear.menu();
-                break;
-            case 7:
-                MenuAndClear.clear();
-                contratarEntregador();
-                scanner.nextLine();
-                MenuAndClear.clear();
-                MenuAndClear.menu();
-                break;
-            case 8:
-                MenuAndClear.clear();
-                pagarEntregador();
-                scanner.nextLine();
-                MenuAndClear.clear();
-                MenuAndClear.menu();
-                break;
-            case 9:
-                MenuAndClear.clear();
-                demitirEntregador();
-                scanner.nextLine();
-                MenuAndClear.clear();
-                MenuAndClear.menu();
-                break;
-            default:
-                System.exit(0);
-                break;
-        }
+        do {
+            MenuAndClear.menu();
+            escolha = scanner.nextByte();
+            scanner.nextLine();  // se der algum erro remove isso em todos os cases
+            switch (escolha) {
+                case 1:
+                    MenuAndClear.clear();
+                    addPizza();
+                    scanner.nextLine();
+                    MenuAndClear.clear();
+                    break;
+                case 2:
+                    MenuAndClear.clear();
+                    removePizza();
+                    scanner.nextLine();
+                    MenuAndClear.clear();
+                    break;
+                case 3:
+                    MenuAndClear.clear();
+                    atualizarPizza();
+                    scanner.nextLine();
+                    MenuAndClear.clear();
+                case 4:
+                    MenuAndClear.clear();
+                    addBebida();
+                    scanner.nextLine();
+                    MenuAndClear.clear();
+                    break;
+                case 5:
+                    MenuAndClear.clear();
+                    removeBebida();
+                    scanner.nextLine();
+                    MenuAndClear.clear();
+                    break;
+                case 6:
+                    MenuAndClear.clear();
+                    atualizarBebida();
+                    scanner.nextLine();
+                    MenuAndClear.clear();
+                    break;
+                case 7:
+                    MenuAndClear.clear();
+                    contratarEntregador();
+                    scanner.nextLine();
+                    MenuAndClear.clear();
+                    break;
+                case 8:
+                    MenuAndClear.clear();
+                    pagarEntregador();
+                    scanner.nextLine();
+                    MenuAndClear.clear();
+                    break;
+                case 9:
+                    MenuAndClear.clear();
+                    demitirEntregador();
+                    scanner.nextLine();
+                    MenuAndClear.clear();
+                    break;
+                case 10:
+                    MenuAndClear.clear();
+                    verpedidos();
+                    scanner.nextLine();
+                    MenuAndClear.clear();
+                default:
+                    System.exit(0);
+                    break;
+            }
+        } while (escolha != 11);
     }
 
-    //nao testei
     public static void addPizza(){
         String sabor;
         String descricao;
@@ -113,12 +111,11 @@ public class Main{
 
     }
 
-    //nao testei
     public static void removePizza(){
         String sabor;
 
         Automatic.mostrarbebidas();
-        System.out.println("REMOVENDO BEBIDA...");
+        System.out.println("REMOVENDO PIZZA...");
         System.out.println("sabor: ");
         sabor = scanner.nextLine();
         scanner.nextLine(); // se der erro tira isso
@@ -135,7 +132,6 @@ public class Main{
         }
     }
 
-    //tava com erro, mas nao testei se resolveu
     public static void atualizarPizza(){
         String sabor;
         String descricao;
@@ -145,9 +141,6 @@ public class Main{
         System.out.println("QUAL PIZZA GOSTARIA DE ATUALIZAR? ");
         System.out.println("sabor: ");
         sabor = scanner.nextLine();
-
-        //o erro ta por aqui!
-
 
         Pizza pizza = new Pizza(sabor);
         for(Pizza obj : Automatic.listapizzas ){
@@ -175,7 +168,6 @@ public class Main{
 
     }
 
-    //testa ai se funciona
     public static void addBebida(){
         String nome;
         double preco;
@@ -197,7 +189,6 @@ public class Main{
         }
     }
 
-    //testa ai se funciona
     public static void removeBebida(){
         String nome;
 
@@ -219,7 +210,6 @@ public class Main{
         }
     }
 
-    // nao testei
     public static void atualizarBebida(){
         String nome;
         double preco;
@@ -248,7 +238,6 @@ public class Main{
         }
     }
 
-    //nao testei
     public static void contratarEntregador(){
         String nome;
         double salario;
@@ -272,7 +261,6 @@ public class Main{
 
     }
 
-    //nao testei
     public static void pagarEntregador(){
         byte id;
 
@@ -311,6 +299,21 @@ public class Main{
         }
     }
 
+    public static void verpedidos(){
+
+    }
+
+    public static void baseconfig(){
+        Pizza pizza1 = new Pizza("marguerita","oregano, queijo, tomate", 32);
+        Pizza pizza2 = new Pizza("calabresa","oregano, queijo, calabresa", 32);
+        Pizza pizza3 = new Pizza("frango","oregano, queijo, frango", 32);
+
+        Bebida bebida1 = new Bebida("Coca-cola Lata", 6);
+        Bebida bebida2 = new Bebida("Fanta Lata", 6);
+
+        Entregador entregador1 = new Entregador("José", 1500);
+        Entregador entregador2 = new Entregador("Raimundo", 1500);
+    }
 }
 
 

@@ -8,6 +8,11 @@ public class Entregador {
     public Entregador() {
     }
 
+    public Entregador(String nome, double salario) {
+        this.nome = nome;
+        this.salario = salario;
+    }
+
     public Entregador(int id){
         this.id = id;
     }

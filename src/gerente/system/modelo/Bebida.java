@@ -14,6 +14,11 @@ public class Bebida {
         this.nome = nome;
     }
 
+    public Bebida(String nome, double preco) {
+        this.nome = nome;
+        this.preco = preco;
+    }
+
     public String getNome() {
         return nome;
     }
