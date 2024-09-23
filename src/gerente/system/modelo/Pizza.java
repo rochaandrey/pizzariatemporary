@@ -12,13 +12,13 @@ public class Pizza {
     }
 
     public Pizza(String sabor, String descricao, double preco) {
-        this.sabor = sabor;
+        this.sabor = sabor.toUpperCase();
         this.descricao = descricao;
         this.preco = preco;
     }
 
     public Pizza(String sabor){
-        this.sabor=sabor;
+        this.sabor=sabor.toUpperCase();
     }
 
     public String getSabor() {

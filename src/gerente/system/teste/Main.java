@@ -107,6 +107,8 @@ public class Main{
         if(!Automatic.listapizzas.contains(pizza)){
             Automatic.listapizzas.add(pizza);
             System.out.println("pizza adicionada! "+ pizza);
+        }else{
+            System.out.println("essa pizza já existe!");
         }
 
     }
@@ -114,12 +116,11 @@ public class Main{
     public static void removePizza(){
         String sabor;
 
-        Automatic.mostrarbebidas();
+        Automatic.mostrarpizzas();
         System.out.println("REMOVENDO PIZZA...");
         System.out.println("sabor: ");
         sabor = scanner.nextLine();
-        scanner.nextLine(); // se der erro tira isso
-        Pizza pizza = new Pizza(sabor);
+        Pizza pizza = new Pizza(sabor.toUpperCase());
 
         if(Automatic.listapizzas.contains(pizza)){
             for(Pizza random : Automatic.listapizzas){
@@ -162,6 +163,7 @@ public class Main{
 
                 System.out.println("----------------");
                 System.out.println("pizza atualizada! "+obj);
+                Automatic.mostrarpizzas();
             }
         }
 
@@ -313,6 +315,14 @@ public class Main{
 
         Entregador entregador1 = new Entregador("José", 1500);
         Entregador entregador2 = new Entregador("Raimundo", 1500);
+
+        Automatic.listabebidas.add(bebida1);
+        Automatic.listabebidas.add(bebida2);
+        Automatic.listapizzas.add(pizza1);
+        Automatic.listapizzas.add(pizza2);
+        Automatic.listapizzas.add(pizza3);
+        Automatic.listaentregadores.add(entregador1);
+        Automatic.listaentregadores.add(entregador2);
     }
 }
 

@@ -11,11 +11,11 @@ public class Bebida {
     }
 
     public Bebida(String nome) {
-        this.nome = nome;
+        this.nome = nome.toUpperCase();
     }
 
     public Bebida(String nome, double preco) {
-        this.nome = nome;
+        this.nome = nome.toUpperCase();
         this.preco = preco;
     }
 
