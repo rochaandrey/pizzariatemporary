@@ -1,4 +1,5 @@
 package gerente.system;
+import gerente.system.Bebida;
 
 import java.util.Scanner;
 
@@ -162,7 +163,7 @@ public class Main {
         System.out.print("Nome da Bebida a atualizar: ");
         String nome = scanner.nextLine();
 
-        for (Bebida bebida : repositorio.bebidas) {
+        for (Bebida bebida: repositorio.bebidas) {
             if (bebida.getNome().equals(nome)) {
                 System.out.print("Novo Nome: ");
                 bebida.setNome(scanner.nextLine());
