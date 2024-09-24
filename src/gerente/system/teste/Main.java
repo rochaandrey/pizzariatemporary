@@ -5,6 +5,7 @@ import gerente.system.modelo.Entregador;
 import gerente.system.modelo.MenuAndClear;
 import gerente.system.modelo.Pizza;
 
+import java.awt.*;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -35,6 +36,7 @@ public class Main{
                     atualizarPizza();
                     scanner.nextLine();
                     MenuAndClear.clear();
+                    break;
                 case 4:
                     MenuAndClear.clear();
                     addBebida();
@@ -76,14 +78,16 @@ public class Main{
                     verpedidos();
                     scanner.nextLine();
                     MenuAndClear.clear();
+                    break;
                 case 11:
+                    MenuAndClear.clear();
                     System.exit(0);
+                    break;
                 default:
-                    System.out.println(" opção inválida");
                     MenuAndClear.clear();
                     break;
             }
-        } while (escolha <= 10);
+        } while (escolha < 20);
     }
 
     public static void addPizza(){
@@ -219,7 +223,7 @@ public class Main{
         String nome;
         double preco;
 
-        Automatic.mostrarpizzas();
+        Automatic.mostrarbebidas();
         System.out.println("QUAL BEBIDA GOSTARIA DE ATUALIZAR? ");
         System.out.println("nome: ");
         nome = scanner.nextLine();
@@ -316,7 +320,6 @@ public class Main{
         }
     }
 
-    //erro
     public static void verpedidos(){
         Random random = new Random();
         int index;
@@ -334,8 +337,6 @@ public class Main{
 
         Automatic.listadepedidos.add(nomepizza+" + "+nomebebida+" - VALOR: "+valor);
         Automatic.mostrarpedidos();
-        scanner.nextLine();
-
     }
 
     public static void baseconfig(){
