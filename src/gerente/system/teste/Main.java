@@ -228,7 +228,6 @@ public class Main{
         System.out.println("nome: ");
         nome = scanner.nextLine();
 
-        //o erro ta por aqui!
         Bebida bebida = new Bebida(nome);
         for(Bebida obj : Automatic.listabebidas ){
             if(bebida.equals(obj)){
@@ -261,8 +260,6 @@ public class Main{
         salario = scanner.nextDouble();
         scanner.nextLine();
         entregador.setSalario(salario);
-
-        //aqui nao precisa de contain, já que podem ter entregadores de mesmo nome mas com id's diferetes
 
         Automatic.listaentregadores.add(entregador);
         entregador.setId(Automatic.listaentregadores.indexOf(entregador)+100);
@@ -306,7 +303,7 @@ public class Main{
         System.out.println("DEMITIR ENTREGADOR...");
         System.out.println("id: ");
         id = scanner.nextByte();
-        scanner.nextLine(); // se der erro tira isso
+        scanner.nextLine();
         Entregador entregador = new Entregador(id);
 
         if(Automatic.listaentregadores.contains(entregador)){

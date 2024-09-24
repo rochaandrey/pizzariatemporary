@@ -20,7 +20,6 @@ public interface MenuAndClear {
     }
 
     static void clear() {
-        //imprime linhas em branco
         int contador = 0;
         while (contador < 20) {
             System.out.println();
