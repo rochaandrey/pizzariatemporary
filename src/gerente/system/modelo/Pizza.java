@@ -22,7 +22,7 @@ public class Pizza {
     }
 
     public String getSabor() {
-        return sabor;
+        return sabor.toUpperCase();
     }
 
     public void setSabor(String sabor) {

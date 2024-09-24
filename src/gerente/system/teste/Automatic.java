@@ -10,6 +10,7 @@ public class Automatic {
     static ArrayList<Pizza> listapizzas = new ArrayList<>();
     static ArrayList<Bebida> listabebidas = new ArrayList<>();
     static ArrayList<Entregador> listaentregadores = new ArrayList<>();
+    static ArrayList<String> listadepedidos = new ArrayList<>();
 
     public static void mostrarpizzas(){
         System.out.println("--------------------------");
@@ -37,6 +38,16 @@ public class Automatic {
         System.out.println("--------------------------");
         for(Entregador entregador : listaentregadores){
             System.out.println("Nome: "+entregador.getNome()+" | "+ entregador.getId()+" |"+ entregador.getSalario());
+        }
+        System.out.println("--------------------------");
+    }
+
+    public static void mostrarpedidos(){
+        System.out.println("--------------------------");
+        System.out.println("######      PEDIDOS      ######");
+        System.out.println("--------------------------");
+        for(String pedido : listadepedidos){
+            System.out.println(pedido);
         }
         System.out.println("--------------------------");
     }

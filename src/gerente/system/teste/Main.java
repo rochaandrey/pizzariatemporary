@@ -5,6 +5,7 @@ import gerente.system.modelo.Entregador;
 import gerente.system.modelo.MenuAndClear;
 import gerente.system.modelo.Pizza;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main{
@@ -15,7 +16,6 @@ public class Main{
         do {
             MenuAndClear.menu();
             escolha = scanner.nextByte();
-            scanner.nextLine();  // se der algum erro remove isso em todos os cases
             switch (escolha) {
                 case 1:
                     MenuAndClear.clear();
@@ -60,13 +60,13 @@ public class Main{
                     break;
                 case 8:
                     MenuAndClear.clear();
-                    pagarEntregador();
+                    demitirEntregador();
                     scanner.nextLine();
                     MenuAndClear.clear();
                     break;
                 case 9:
                     MenuAndClear.clear();
-                    demitirEntregador();
+                    atualizarEntregador();
                     scanner.nextLine();
                     MenuAndClear.clear();
                     break;
@@ -75,11 +75,14 @@ public class Main{
                     verpedidos();
                     scanner.nextLine();
                     MenuAndClear.clear();
-                default:
+                case 11:
                     System.exit(0);
+                default:
+                    System.out.println(" opção inválida");
+                    MenuAndClear.clear();
                     break;
             }
-        } while (escolha != 11);
+        } while (escolha <= 10);
     }
 
     public static void addPizza(){
@@ -164,6 +167,7 @@ public class Main{
                 System.out.println("----------------");
                 System.out.println("pizza atualizada! "+obj);
                 Automatic.mostrarpizzas();
+
             }
         }
 
@@ -263,20 +267,31 @@ public class Main{
 
     }
 
-    public static void pagarEntregador(){
-        byte id;
+    public static void atualizarEntregador(){
+        int id;
+        String nome;
+        double salario;
 
         Automatic.mostrarentregadores();
-        System.out.println("QUAL O ENTREGADOR DESEJA PAGAR? ");
+        System.out.println("ATUALIZANDO DADOS...");
+        System.out.println("qual o id do entregador? ");
         System.out.println("id: ");
-        id = scanner.nextByte();
+        id = scanner.nextInt();
+        scanner.nextLine();
         Entregador entregador = new Entregador(id);
-        scanner.nextLine();  //se tiver dando erro, acho que tirar isso resolve
-        if (Automatic.listaentregadores.contains(entregador)) {
-            for( Entregador random : Automatic.listaentregadores){
-                if(entregador.equals(random)){
-                    System.out.println("entregador pago!");
-                }
+        for(Entregador random : Automatic.listaentregadores){
+            if(random.equals(entregador)){
+                System.out.println("nome: ");
+                nome = scanner.nextLine();
+                random.setNome(nome);
+
+                System.out.println("salario: ");
+                salario = scanner.nextDouble();
+                random.setSalario(salario);
+
+                System.out.println("informações atualizadas! ");
+                Automatic.mostrarentregadores();
+                scanner.nextLine();
             }
         }
     }
@@ -301,7 +316,25 @@ public class Main{
         }
     }
 
+    //erro
     public static void verpedidos(){
+        Random random = new Random();
+        int index;
+        Pizza pizza;
+        Bebida bebida;
+        String nomepizza;
+        String nomebebida;
+        double valor;
+
+        pizza = Automatic.listapizzas.get(random.nextInt(0,Automatic.listapizzas.size()));
+        nomepizza = pizza.getSabor();
+        bebida = Automatic.listabebidas.get(random.nextInt(0,Automatic.listabebidas.size()));
+        nomebebida = bebida.getNome();
+        valor = pizza.getPreco() + bebida.getPreco();
+
+        Automatic.listadepedidos.add(nomepizza+" + "+nomebebida+" - VALOR: "+valor);
+        Automatic.mostrarpedidos();
+        scanner.nextLine();
 
     }
 
@@ -323,6 +356,9 @@ public class Main{
         Automatic.listapizzas.add(pizza3);
         Automatic.listaentregadores.add(entregador1);
         Automatic.listaentregadores.add(entregador2);
+
+        entregador1.setId(Automatic.listaentregadores.indexOf(entregador1)+100);
+        entregador2.setId(Automatic.listaentregadores.indexOf(entregador2)+100);
     }
 }
 

@@ -9,7 +9,7 @@ public class Entregador {
     }
 
     public Entregador(String nome, double salario) {
-        this.nome = nome;
+        this.nome = nome.toUpperCase();
         this.salario = salario;
     }
 
@@ -18,11 +18,11 @@ public class Entregador {
     }
 
     public String getNome() {
-        return nome;
+        return nome.toUpperCase();
     }
 
     public void setNome(String nome) {
-        this.nome = nome;
+        this.nome = nome.toUpperCase();
     }
 
     public int getId() {
