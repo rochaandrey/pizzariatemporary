@@ -17,11 +17,6 @@ public class Pizza {
         this.preco = preco;
     }
 
-
-    public Pizza(String sabor){
-        this.sabor=sabor;
-    }
-
     public String getNome() {
         return sabor;
     }

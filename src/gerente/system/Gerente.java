@@ -2,7 +2,7 @@ package gerente.system;
 
 public class Gerente {
     final private SistemaDePedidos sistemaDePedidos;
-    private RepositorioCardapio repositorioCardapio;
+    final private RepositorioCardapio repositorioCardapio;
 
     public Gerente(SistemaDePedidos sistemaDePedidos, RepositorioCardapio repositorioCardapio) {
         this.sistemaDePedidos = sistemaDePedidos;

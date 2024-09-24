@@ -1,6 +1,9 @@
 package gerente.system;
 
 import java.util.ArrayList;
+import java.util.Scanner;
+
+
 
 public class RepositorioCardapio {
     // Listas para armazenar bebidas, pizzas e entregadores
@@ -8,6 +11,7 @@ public class RepositorioCardapio {
     public ArrayList<Pizza> pizzas = new ArrayList<>();
     public ArrayList<Entregador> entregadores = new ArrayList<>();
 
+    Scanner scanner = new Scanner(System.in);
 
 
     // Método para adicionar objetos ao repositório
@@ -30,6 +34,13 @@ public class RepositorioCardapio {
             if(objExistente(obj)){
                 System.out.println("Erro ao adiconar entregaddor! O  entregador já é funcionário da empresa!");
             } else{
+                for(Entregador entregador: entregadores){
+                    while(((Entregador) obj).getId() == entregador.getId()){
+                        System.out.println("O id já existe! Escolha outro!");
+                        System.out.println("Id: ");
+                        entregador.setId(scanner.nextInt());
+                    }
+                }
                 entregadores.add((Entregador) obj);
                 System.out.println("Entregador adicionado: " + ((Entregador) obj).getNome());
             }
@@ -86,4 +97,41 @@ public class RepositorioCardapio {
         }
         return false;
     }
+
+    public void vizualizarCardapio() {
+        if (pizzas.isEmpty()) {
+            System.out.println("Nenhum pizza encontrada.");
+        } else {
+            System.out.println("Pizzas: ");
+            for (Pizza pizza : pizzas) {
+                System.out.println("Sabor: " + pizza.getNome());
+                System.out.println("Descrição: " + pizza.getDescricao());
+                System.out.println("Preço: " + pizza.getPreco());
+            }
+        }
+
+        if(bebidas.isEmpty()) {
+            System.out.println("Nenhuma bebida encontrada.");
+        } else{
+            for(Bebida bebida: bebidas){
+                System.out.println("Bebidas: ");
+                System.out.println("Nome: " + bebida.getNome());
+                System.out.println("Preço: " + bebida.getPreco());
+            }
+        }
+    }
+
+    public void vizualizarEntregadores(){
+        if(entregadores.isEmpty()) {
+            System.out.println("Nenhum entregador encontrado.");
+        } else{
+            for(Entregador entregador: entregadores){
+                System.out.println("Nome: " + entregador.getNome());
+                System.out.println("Id: " + entregador.getId());
+                System.out.println("Preço: " + entregador.getSalario());
+            }
+        }
+    }
+
+
 }
