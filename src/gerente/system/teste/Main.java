@@ -5,7 +5,6 @@ import gerente.system.modelo.Entregador;
 import gerente.system.modelo.MenuAndClear;
 import gerente.system.modelo.Pizza;
 
-import java.awt.*;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -319,7 +318,6 @@ public class Main{
 
     public static void verpedidos(){
         Random random = new Random();
-        int index;
         Pizza pizza;
         Bebida bebida;
         String nomepizza;
