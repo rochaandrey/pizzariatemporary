@@ -37,7 +37,7 @@ public class Automatic {
         System.out.println("######      ENTREGADORES      ######");
         System.out.println("--------------------------");
         for(Entregador entregador : listaentregadores){
-            System.out.println("Nome: "+entregador.getNome()+" | "+ entregador.getId()+" |"+ entregador.getSalario());
+            System.out.println("Nome: "+entregador.getNome()+" | ID: "+ entregador.getId()+" | SALÁRIO: "+ entregador.getSalario());
         }
         System.out.println("--------------------------");
     }

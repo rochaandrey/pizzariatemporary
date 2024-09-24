@@ -16,6 +16,7 @@ public class Main{
         do {
             MenuAndClear.menu();
             escolha = scanner.nextByte();
+            scanner.nextLine();
             switch (escolha) {
                 case 1:
                     MenuAndClear.clear();
@@ -148,7 +149,7 @@ public class Main{
 
         Pizza pizza = new Pizza(sabor);
         for(Pizza obj : Automatic.listapizzas ){
-            if(pizza.equals(obj)){
+            if(obj.equals(pizza)){
                 System.out.println("----------------------");
                 System.out.println("Alterando pizza! "+obj);
                 System.out.println("sabor :");
@@ -161,17 +162,15 @@ public class Main{
 
                 System.out.println("preço: ");
                 preco = scanner.nextDouble();
-                scanner.nextLine();
                 obj.setPreco(preco);
+                scanner.nextLine();
 
                 System.out.println("----------------");
                 System.out.println("pizza atualizada! "+obj);
                 Automatic.mostrarpizzas();
-
+                break;
             }
         }
-
-
     }
 
     public static void addBebida(){
@@ -192,6 +191,8 @@ public class Main{
         if(!Automatic.listabebidas.contains(bebida)){
             Automatic.listabebidas.add(bebida);
             System.out.println("Bebida adicionada: "+bebida);
+        }else{
+            System.out.println("a bebida já existe!");
         }
     }
 
@@ -202,12 +203,10 @@ public class Main{
         System.out.println("REMOVENDO BEBIDA...");
         System.out.println("nome: ");
         nome = scanner.nextLine();
-        scanner.nextLine(); // se der erro tira isso
         Bebida bebida = new Bebida(nome);
-
         if(Automatic.listabebidas.contains(bebida)){
             for(Bebida random : Automatic.listabebidas){
-                if(bebida.equals(random)){
+                if(random.equals(bebida)){
                     Automatic.listabebidas.remove(random);
                     System.out.println(random.getNome()+" REMOVIDO");
                     break;
@@ -278,10 +277,11 @@ public class Main{
         System.out.println("id: ");
         id = scanner.nextInt();
         scanner.nextLine();
+
         Entregador entregador = new Entregador(id);
         for(Entregador random : Automatic.listaentregadores){
             if(random.equals(entregador)){
-                System.out.println("nome: ");
+                System.out.println("novo nome: ");
                 nome = scanner.nextLine();
                 random.setNome(nome);
 
