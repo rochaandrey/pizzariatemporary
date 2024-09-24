@@ -15,7 +15,9 @@ public interface InterfaceGerente {
         System.out.println("| 8 - Remover Entregador              |");
         System.out.println("| 9 - Atualizar Entregador            |");
         System.out.println("| 10 - Ver pedidos                    |");
-        System.out.println("| 11 - Sair                           |");
+        System.out.println("| 11 - Ver Cardápio                   |");
+        System.out.println("| 12 - Ver Entregadores               |");
+        System.out.println("| 13 - Sair                           |");
         System.out.println("+_____________________________________+");
     }
 

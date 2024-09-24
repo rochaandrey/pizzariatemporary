@@ -46,14 +46,6 @@ public class Pizza {
         this.preco = preco;
     }
 
-    @Override
-    public String toString() {
-        return '{' +
-                "sabor='" + sabor + '\'' +
-                ", descricao='" + descricao + '\'' +
-                ", preco=" + preco +
-                '}';
-    }
 
     @Override
     public boolean equals(Object o) {

@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 public class Cliente {
-    private Random random = new Random();
+    final private Random random = new Random();
 
     public Pedido fazerPedidoAleatorio(RepositorioCardapio repositorio) {
         List<Pizza> pizzas = repositorio.pizzas;

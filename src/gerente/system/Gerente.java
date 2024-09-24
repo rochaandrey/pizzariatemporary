@@ -1,13 +1,23 @@
 package gerente.system;
 
 public class Gerente {
-    private SistemaDePedidos sistemaDePedidos;
+    final private SistemaDePedidos sistemaDePedidos;
+    private RepositorioCardapio repositorioCardapio;
 
-    public Gerente(SistemaDePedidos sistemaDePedidos) {
+    public Gerente(SistemaDePedidos sistemaDePedidos, RepositorioCardapio repositorioCardapio) {
         this.sistemaDePedidos = sistemaDePedidos;
+        this.repositorioCardapio = repositorioCardapio;
     }
 
     public void visualizarPedidos() {
         sistemaDePedidos.visualizarPedidos();
+    }
+
+    public void vizualizarCardapio(){
+        repositorioCardapio.vizualizarCardapio();
+    }
+
+    public void vizualizarEntregadores(){
+        repositorioCardapio.vizualizarEntregadores();
     }
 }

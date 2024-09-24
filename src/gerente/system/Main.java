@@ -3,10 +3,10 @@ package gerente.system;
 import java.util.Scanner;
 
 public class Main {
-    private static Scanner scanner = new Scanner(System.in);
-    private static RepositorioCardapio repositorio = new RepositorioCardapio();
-    private static SistemaDePedidos sistemaDePedidos = new SistemaDePedidos();
-    private static Gerente gerente = new Gerente(sistemaDePedidos);
+    private final static Scanner scanner = new Scanner(System.in);
+    private final static RepositorioCardapio repositorio = new RepositorioCardapio();
+    private final static SistemaDePedidos sistemaDePedidos = new SistemaDePedidos();
+    private final static Gerente gerente = new Gerente(sistemaDePedidos, repositorio);
 
     public static void main(String[] args) {
         // Inicia a simulação de pedidos automáticos
@@ -52,6 +52,12 @@ public class Main {
                     gerente.visualizarPedidos();
                     break;
                 case 11:
+                    gerente.vizualizarCardapio();
+                    break;
+                case 12:
+                    gerente.vizualizarEntregadores();
+                    break;
+                case 13:
                     System.out.println("Saindo...");
                     System.exit(0);
                     break;
@@ -60,7 +66,7 @@ public class Main {
                     break;
             }
             InterfaceGerente.clear();
-        } while (escolha != 11);
+        } while (true);
     }
 
     // Métodos de Adicionar
@@ -93,6 +99,8 @@ public class Main {
         System.out.println("Adicionar Entregador");
         System.out.print("Nome: ");
         entregador.setNome(scanner.nextLine());
+        System.out.print("Id: ");
+        entregador.setId(scanner.nextInt());
         System.out.print("Salário: ");
         entregador.setSalario(scanner.nextDouble());
         scanner.nextLine();
@@ -134,7 +142,7 @@ public class Main {
         String nome = scanner.nextLine();
 
         for (Pizza pizza : repositorio.pizzas) {
-            if (pizza.getNome().equalsIgnoreCase(nome)) {
+            if (pizza.getNome().equals(nome)) {
                 System.out.print("Novo Nome: ");
                 pizza.setNome(scanner.nextLine());
                 System.out.print("Nova Descrição: ");
@@ -155,7 +163,7 @@ public class Main {
         String nome = scanner.nextLine();
 
         for (Bebida bebida : repositorio.bebidas) {
-            if (bebida.getNome().equalsIgnoreCase(nome)) {
+            if (bebida.getNome().equals(nome)) {
                 System.out.print("Novo Nome: ");
                 bebida.setNome(scanner.nextLine());
                 System.out.print("Novo Preço: ");
@@ -174,7 +182,7 @@ public class Main {
         String nome = scanner.nextLine();
 
         for (Entregador entregador : repositorio.entregadores) {
-            if (entregador.getNome().equalsIgnoreCase(nome)) {
+            if (entregador.getNome().equals(nome)) {
                 System.out.print("Novo Nome: ");
                 entregador.setNome(scanner.nextLine());
                 System.out.print("Novo Salário: ");
@@ -186,6 +194,7 @@ public class Main {
         }
         System.out.println("Entregador não encontrado.");
     }
+
 
     private static void inicializarCardapio() {
         // Adicionando pizzas básicas

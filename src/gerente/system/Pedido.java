@@ -4,9 +4,9 @@ import java.util.List;
 
 public class Pedido {
     private static int contadorPedidos = 0;
-    private int numeroPedido;
-    private List<Pizza> pizzas;
-    private List<Bebida> bebidas;
+    private final int numeroPedido;
+    private final List<Pizza> pizzas;
+    private final List<Bebida> bebidas;
 
     public Pedido(List<Pizza> pizzas, List<Bebida> bebidas) {
         this.numeroPedido = ++contadorPedidos;

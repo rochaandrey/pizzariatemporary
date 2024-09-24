@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SistemaDePedidos {
-    private List<Pedido> pedidos = new ArrayList<>();
+    final private List<Pedido> pedidos = new ArrayList<>();
 
     // Adiciona pedido ao sistema
     public void adicionarPedido(Pedido pedido) {
@@ -33,7 +33,7 @@ public class SistemaDePedidos {
                     adicionarPedido(pedido);
 
                     // Espera por 5 segundos antes de gerar o próximo pedido
-                    Thread.sleep(100000);
+                    Thread.sleep(30000);
                 } catch (InterruptedException e) {
                     System.out.println("Simulação de pedidos interrompida.");
                     break;
