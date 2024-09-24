@@ -90,26 +90,20 @@ public class Main{
     }
 
     public static void addPizza(){
-        String sabor;
-        String descricao;
-        double preco;
         Pizza pizza = new Pizza();
 
         System.out.println("------------------------");
         System.out.println("QUAL O SABOR DA PIZZA? : ");
-        sabor = scanner.nextLine();
-        pizza.setSabor(sabor);
+        pizza.setSabor(scanner.nextLine());
 
         System.out.println("------------------------");
         System.out.println("QUAIS OS INGREDIENTES DA PIZZA? : ");
-        descricao = scanner.nextLine();
-        pizza.setDescricao(descricao);
+        pizza.setDescricao(scanner.nextLine());
 
         System.out.println("------------------------");
         System.out.println("QUAL O PREÇO DA PIZZA? ");
-        preco = scanner.nextDouble();
+        pizza.setPreco(scanner.nextDouble());
         scanner.nextLine();
-        pizza.setPreco(preco);
 
         if(!Automatic.listapizzas.contains(pizza)){
             Automatic.listapizzas.add(pizza);
@@ -142,8 +136,6 @@ public class Main{
 
     public static void atualizarPizza(){
         String sabor;
-        String descricao;
-        double preco;
 
         Automatic.mostrarpizzas();
         System.out.println("QUAL PIZZA GOSTARIA DE ATUALIZAR? ");
@@ -156,16 +148,13 @@ public class Main{
                 System.out.println("----------------------");
                 System.out.println("Alterando pizza! "+obj);
                 System.out.println("sabor :");
-                sabor = scanner.nextLine();
-                obj.setSabor(sabor);
+                obj.setSabor(scanner.nextLine());
 
                 System.out.println("descrição: ");
-                descricao = scanner.nextLine();
-                obj.setDescricao(descricao);
+                obj.setDescricao(scanner.nextLine());
 
                 System.out.println("preço: ");
-                preco = scanner.nextDouble();
-                obj.setPreco(preco);
+                obj.setPreco(scanner.nextDouble());
                 scanner.nextLine();
 
                 System.out.println("----------------");
@@ -177,19 +166,15 @@ public class Main{
     }
 
     public static void addBebida(){
-        String nome;
-        double preco;
         Bebida bebida = new Bebida();
 
         System.out.println("ADICIONANDO BEBIDA...");
         System.out.println("nome: ");
-        nome = scanner.nextLine();
-        bebida.setNome(nome);
+        bebida.setNome(scanner.nextLine());
 
         System.out.println("preco: ");
-        preco = scanner.nextDouble();
+        bebida.setPreco(scanner.nextDouble());
         scanner.nextLine();
-        bebida.setPreco(preco);
 
         if(!Automatic.listabebidas.contains(bebida)){
             Automatic.listabebidas.add(bebida);
@@ -206,6 +191,7 @@ public class Main{
         System.out.println("REMOVENDO BEBIDA...");
         System.out.println("nome: ");
         nome = scanner.nextLine();
+
         Bebida bebida = new Bebida(nome);
         if(Automatic.listabebidas.contains(bebida)){
             for(Bebida random : Automatic.listabebidas){
@@ -220,7 +206,6 @@ public class Main{
 
     public static void atualizarBebida(){
         String nome;
-        double preco;
 
         Automatic.mostrarbebidas();
         System.out.println("QUAL BEBIDA GOSTARIA DE ATUALIZAR? ");
@@ -233,12 +218,10 @@ public class Main{
                 System.out.println("----------------------");
                 System.out.println("Alterando bebida! "+obj);
                 System.out.println("nome :");
-                nome = scanner.nextLine();
-                obj.setNome(nome);
+                obj.setNome(scanner.nextLine());
                 System.out.println("preço: ");
-                preco = scanner.nextDouble();
+                obj.setPreco(scanner.nextDouble());
                 scanner.nextLine();
-                obj.setPreco(preco);
                 System.out.println("----------------");
                 System.out.println("bebida atualizada! "+obj);
             }
@@ -246,19 +229,15 @@ public class Main{
     }
 
     public static void contratarEntregador(){
-        String nome;
-        double salario;
         Entregador entregador = new Entregador();
 
         System.out.println("Novo entregador: ");
         System.out.println("nome: ");
-        nome = scanner.nextLine();
-        entregador.setNome(nome);
+        entregador.setNome(scanner.nextLine());
 
         System.out.println("salario: ");
-        salario = scanner.nextDouble();
+        entregador.setSalario(scanner.nextDouble());
         scanner.nextLine();
-        entregador.setSalario(salario);
 
         Automatic.listaentregadores.add(entregador);
         entregador.setId(Automatic.listaentregadores.indexOf(entregador)+100);
@@ -268,8 +247,6 @@ public class Main{
 
     public static void atualizarEntregador(){
         int id;
-        String nome;
-        double salario;
 
         Automatic.mostrarentregadores();
         System.out.println("ATUALIZANDO DADOS...");
@@ -282,12 +259,10 @@ public class Main{
         for(Entregador random : Automatic.listaentregadores){
             if(random.equals(entregador)){
                 System.out.println("novo nome: ");
-                nome = scanner.nextLine();
-                random.setNome(nome);
+                random.setNome(scanner.nextLine());
 
                 System.out.println("salario: ");
-                salario = scanner.nextDouble();
-                random.setSalario(salario);
+                random.setSalario(scanner.nextDouble());
 
                 System.out.println("informações atualizadas! ");
                 Automatic.mostrarentregadores();
