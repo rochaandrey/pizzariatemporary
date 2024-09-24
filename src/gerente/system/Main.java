@@ -2,12 +2,23 @@ package gerente.system;
 
 import java.util.Scanner;
 
+/**
+ * A classe {@code Main} é onde tudo acontece!
+ * Aqui o gerente cuida do cardápio, pedidos, entregadores e mais.
+ * Basicamente, é o coração do sistema.
+ */
 public class Main {
     private final static Scanner scanner = new Scanner(System.in);
     private final static RepositorioCardapio repositorio = new RepositorioCardapio();
     private final static SistemaDePedidos sistemaDePedidos = new SistemaDePedidos();
     private final static Gerente gerente = new Gerente(sistemaDePedidos, repositorio);
 
+    /**
+     * O método principal onde o programa começa a rodar.
+     * Inicializa o cardápio e inicia a simulação de pedidos. Depois, entra em um loop infinito para interagir com o gerente.
+     *
+     * @param args Argumentos da linha de comando (não usados aqui).
+     */
     public static void main(String[] args) {
         // Inicia a simulação de pedidos automáticos
         inicializarCardapio();
@@ -16,7 +27,7 @@ public class Main {
         int escolha;
 
         do {
-            InterfaceGerente.menu();
+            InterfaceGerente.menu(); // Mostra o menu de opções
             escolha = scanner.nextInt();
             scanner.nextLine(); // Limpa o buffer do scanner
 
@@ -65,11 +76,13 @@ public class Main {
                     System.out.println("Opção inválida. Tente novamente.");
                     break;
             }
-            InterfaceGerente.clear();
+            InterfaceGerente.clear(); // Limpa a tela
         } while (true);
     }
 
-    // Métodos de Adicionar
+    /**
+     * Adiciona uma nova pizza ao cardápio.
+     */
     public static void adicionarPizza() {
         Pizza pizza = new Pizza();
         System.out.println("Adicionar Pizza");
@@ -79,10 +92,13 @@ public class Main {
         pizza.setDescricao(scanner.nextLine());
         System.out.print("Preço: ");
         pizza.setPreco(scanner.nextDouble());
-        scanner.nextLine();
+        scanner.nextLine(); // Limpa o buffer
         repositorio.adicionar(pizza);
     }
 
+    /**
+     * Adiciona uma nova bebida ao cardápio.
+     */
     public static void adicionarBebida() {
         Bebida bebida = new Bebida();
         System.out.println("Adicionar Bebida");
@@ -90,10 +106,13 @@ public class Main {
         bebida.setNome(scanner.nextLine());
         System.out.print("Preço: ");
         bebida.setPreco(scanner.nextDouble());
-        scanner.nextLine();
+        scanner.nextLine(); // Limpa o buffer
         repositorio.adicionar(bebida);
     }
 
+    /**
+     * Adiciona um novo entregador à equipe.
+     */
     public static void adicionarEntregador() {
         Entregador entregador = new Entregador();
         System.out.println("Adicionar Entregador");
@@ -103,11 +122,13 @@ public class Main {
         entregador.setId(scanner.nextInt());
         System.out.print("Salário: ");
         entregador.setSalario(scanner.nextDouble());
-        scanner.nextLine();
+        scanner.nextLine(); // Limpa o buffer
         repositorio.adicionar(entregador);
     }
 
-    // Métodos de Remover
+    /**
+     * Remove uma pizza do cardápio.
+     */
     public static void removerPizza() {
         System.out.println("Remover Pizza");
         System.out.print("Nome da Pizza a remover: ");
@@ -117,6 +138,9 @@ public class Main {
         repositorio.remover(pizza);
     }
 
+    /**
+     * Remove uma bebida do cardápio.
+     */
     public static void removerBebida() {
         System.out.println("Remover Bebida");
         System.out.print("Nome da Bebida a remover: ");
@@ -126,6 +150,9 @@ public class Main {
         repositorio.remover(bebida);
     }
 
+    /**
+     * Remove um entregador da equipe.
+     */
     public static void removerEntregador() {
         System.out.println("Remover Entregador");
         System.out.print("Nome do Entregador a remover: ");
@@ -135,7 +162,9 @@ public class Main {
         repositorio.remover(entregador);
     }
 
-    // Métodos de Atualizar
+    /**
+     * Atualiza uma pizza no cardápio.
+     */
     public static void atualizarPizza() {
         System.out.println("Atualizar Pizza");
         System.out.print("Nome da Pizza a atualizar: ");
@@ -149,7 +178,7 @@ public class Main {
                 pizza.setDescricao(scanner.nextLine());
                 System.out.print("Novo Preço: ");
                 pizza.setPreco(scanner.nextDouble());
-                scanner.nextLine();
+                scanner.nextLine(); // Limpa o buffer
                 System.out.println("Pizza atualizada com sucesso!");
                 return;
             }
@@ -157,6 +186,9 @@ public class Main {
         System.out.println("Pizza não encontrada.");
     }
 
+    /**
+     * Atualiza uma bebida no cardápio.
+     */
     public static void atualizarBebida() {
         System.out.println("Atualizar Bebida");
         System.out.print("Nome da Bebida a atualizar: ");
@@ -168,7 +200,7 @@ public class Main {
                 bebida.setNome(scanner.nextLine());
                 System.out.print("Novo Preço: ");
                 bebida.setPreco(scanner.nextDouble());
-                scanner.nextLine();
+                scanner.nextLine(); // Limpa o buffer
                 System.out.println("Bebida atualizada com sucesso!");
                 return;
             }
@@ -176,6 +208,9 @@ public class Main {
         System.out.println("Bebida não encontrada.");
     }
 
+    /**
+     * Atualiza um entregador da equipe.
+     */
     public static void atualizarEntregador() {
         System.out.println("Atualizar Entregador");
         System.out.print("Nome do Entregador a atualizar: ");
@@ -187,7 +222,7 @@ public class Main {
                 entregador.setNome(scanner.nextLine());
                 System.out.print("Novo Salário: ");
                 entregador.setSalario(scanner.nextDouble());
-                scanner.nextLine();
+                scanner.nextLine(); // Limpa o buffer
                 System.out.println("Entregador atualizado com sucesso!");
                 return;
             }
@@ -195,7 +230,9 @@ public class Main {
         System.out.println("Entregador não encontrado.");
     }
 
-
+    /**
+     * Inicializa o cardápio com algumas pizzas e bebidas básicas.
+     */
     private static void inicializarCardapio() {
         // Adicionando pizzas básicas
         repositorio.adicionar(new Pizza("Margherita", "Molho de tomate, mozzarella, manjericão", 25.00));

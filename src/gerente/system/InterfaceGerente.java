@@ -1,6 +1,14 @@
 package gerente.system;
 
+/**
+ * A interface {@code InterfaceGerente} define alguns métodos estáticos úteis para o gerente.
+ * Tem um menu bonitinho e um método pra limpar a tela (mais ou menos).
+ */
 public interface InterfaceGerente {
+    /**
+     * Mostra o menu com as opções que o gerente pode escolher.
+     * Tipo, adicionar ou remover pizzas, bebidas e entregadores, além de visualizar pedidos e outras coisas.
+     */
     static void menu() {
         System.out.println("=======================================");
         System.out.println("| BOA NOITE! O QUE DESEJA FAZER HOJE? |");
@@ -21,13 +29,16 @@ public interface InterfaceGerente {
         System.out.println("+_____________________________________+");
     }
 
+    /**
+     * Imprime algumas linhas em branco pra dar aquela limpada na tela.
+     * Não é uma super limpeza, mas ajuda a organizar o visual do console.
+     */
     static void clear() {
-        //imprime linhas em branco
+        // imprime linhas em branco
         int contador = 0;
-        while (contador < 20) {
+        while (contador < 1) {
             System.out.println();
             contador++;
         }
     }
-
 }
